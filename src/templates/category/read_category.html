@@ -1,0 +1,17 @@
+{% extends 'base.html.jinja' %}
+
+{% block content %}
+
+<h1> {% block title %} Detalle materia {% endblock %} </h1>
+
+<ul>
+    <li> <h4>Nombre del profesor: </h4> <p>{{ materia['nombre'] }} </p> </li>
+    <li> <h4>Apellido del profesor: </h4> <p>{{ materia['apellido'] }} </p> </li>
+    <li> <h4>Cédula del profesor: </h4> <p>{{ materia['cedula'] }} </p> </li>
+    <li> <h4>Nombre de la materia: </h4> <p>{{ materia['nombremateria'] }} </p> </li>
+    <li> <h4>Objetivo de la materia: </h4> <p>{{ materia['objetivomateria'] }} </p> </li>
+    <li> <h4>Duración de la materia (horas): </h4> <p>{{ materia['horasmaterias'] }} </p> </li>
+    <li> <h4>Nota mínima aprobatoria: </h4> <p>{{ materia['nota'] }} </p> </li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html.jinja' %}
+
+{% block content %}
+
+<h1> {% block title %} Agregar materia {% endblock %} </h1>
+
+<article class="form">
+
+<form method="post">
+
+    <label for="nombre">
+        <span>Nombre del profesor: </span>
+        <input type="text" name="nombre" placeholder="Nombre" value="{{ request.form['nombre'] }}">
+    </label>
+
+    <label for="apellido">
+        <span>Apellido del profesor: </span>
+        <input type="text" name="apellido" placeholder="Apellido" value="{{ request.form['apellido'] }}">
+    </label>
+
+    <label for="cedula">
+        <span>Cédula del profesor: </span>
+        <input type="text" name="cedula" placeholder="Cedula" value="{{ request.form['cedula'] }}">
+    </label>
+
+    <label for="nombremateria">
+        <span>Nombre de la materia: </span>
+        <input type="text" name="nombremateria" placeholder="Materia" value="{{ request.form['nombremateria'] }}">
+    </label>
+
+    <label for="objetivomateria">
+        <span>Objetivo de la materia: </span>
+        <textarea name="objetivomateria"
+        placeholder="Objetivo de la materia"
+        rows="2"
+        cols="25">
+            {{ request.form['objetivomateria'] }}
+        </textarea>
+    </label>
+
+    <label for="horasmaterias">
+        <span>Duración de la materia (horas): </span>
+        <input type="number" name="horasmaterias" placeholder="Horas" value="{{ request.form['horasmaterias'] }}">
+    </label>
+
+    <label for="nota">
+        <span>Nota mínima aprobatoria: </span>
+        <input type="number" name="nota" placeholder="Nota" value="{{ request.form['nota'] }}">
+    </label>
+
+    <button type="submit">Agregar</button>
+
+</form>
+  
+</article>
+
+
+{% endblock %}

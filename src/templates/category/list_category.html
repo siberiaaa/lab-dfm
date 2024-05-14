@@ -1,0 +1,16 @@
+{% extends 'base.html.jinja' %}
+
+{% block content %}
+
+<h1 class="listar"> {% block title %} Lista materias {% endblock %} </h1>
+
+<ul class="listar">
+    {% for materia in listamaterias %}
+    <li> 
+    Nombre de la materia: {{ materia["nombremateria"] }} <a href="/{{ materia['_id'] }}">Detalle</a> <a href="/update/{{ materia['_id'] }}">Modificar</a> <a href="/delete/{{ materia['_id'] }}">Eliminar</a>
+    </li> 
+    <hr>
+    {% endfor %}
+</ul>
+
+{% endblock %}
