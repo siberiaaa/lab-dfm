@@ -1,4 +1,5 @@
 from flask import Flask, g, request, redirect, url_for
+from flask import session as s
 from modules.home import homes, check_cookie
 import modules.category as category
 import modules.test as test
@@ -10,11 +11,12 @@ from datetime import timedelta
 
 app = Flask(__name__, template_folder="./templates")
 app.config["SECRET_KEY"] = "wao"
-app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=5)
-
 
 @app.before_request
 def middleware():
+    s.permanent = True
+    app.permanent_session_lifetime = timedelta(minutes=5)
+
     session = check_cookie()
     g.setdefault("session", session)
 

@@ -14,7 +14,6 @@ def login():
         if user == None:
             flash("Username or password incorrect.")
         else:
-            session.permanent = True
             session['session'] = str(user["_id"])
             return redirect(url_for("home"))
 
