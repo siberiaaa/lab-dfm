@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1> {% block title %} Common instruction {% endblock %} </h1>
+
+    {% for message in get_flashed_messages() %}
+            <p class="error"> {{ message }} </p>
+    {% endfor %}
+    
+{% if testlist != -1 and instructionlist != -1%}
+
+    <table class="pure-table pure-table-horizontal pure-table-striped">
+        <thead>
+            <tr>
+                <th>Instructions name</th>
+                <th>Tests with this instruction</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for key, value in instructions_dictionary.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+ 
+    <canvas id="myChart"></canvas>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+
+
+{% endif %}
+
+
+
+{% endblock %}

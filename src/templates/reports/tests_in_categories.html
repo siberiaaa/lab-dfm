@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1> {% block title %} Tests in categories {% endblock %} </h1>
+
+    {% for message in get_flashed_messages() %}
+            <p class="error"> {{ message }} </p>
+    {% endfor %}
+    
+{% if testlist != -1 and categorylist != -1%}
+
+    <table class="pure-table pure-table-horizontal pure-table-striped">
+        <thead>
+            <tr>
+                <th>Category name</th>
+                <th>Tests with this category</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for key, value in categories_dictionary.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+ 
+
+
+
+{% endif %}
+
+
+
+{% endblock %}

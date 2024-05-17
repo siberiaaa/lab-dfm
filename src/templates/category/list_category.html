@@ -1,16 +1,38 @@
-{% extends 'base.html.jinja' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<h1 class="listar">{% block title %} Categories {% endblock %}</h1>
 
-<h1 class="listar"> {% block title %} Lista materias {% endblock %} </h1>
+{% if username != "" or username == None %}
+<a href="/categories/add" class="pure-button pure-button-primary"
+    ><i class="fa-solid fa-plus"></i>  &nbsp; Add category </a
+>
+{% endif %}
 
-<ul class="listar">
-    {% for materia in listamaterias %}
-    <li> 
-    Nombre de la materia: {{ materia["nombremateria"] }} <a href="/{{ materia['_id'] }}">Detalle</a> <a href="/update/{{ materia['_id'] }}">Modificar</a> <a href="/delete/{{ materia['_id'] }}">Eliminar</a>
-    </li> 
-    <hr>
-    {% endfor %}
-</ul>
+<table class="pure-table pure-table-horizontal pure-table-striped">
+    <thead>
+        <tr>
+            <th>Category name</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for category in categorylist %}
+        <tr>
+            <td>{{ category["name"] }}</td>
+
+            {% if username != "" or username == None %}
+            <td><a href="/categories/{{ category['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a> 
+                <a href="/categories/update/{{ category['_id'] }}" class="pure-button"><i class="fa-solid fa-pen-to-square"></i></a> 
+                <a href="/categories/delete/{{ category['_id'] }}" class="pure-button"><i class="fa-solid fa-trash"></i></a></td>
+
+            {% else %}
+            <td><p>Log in for options</p></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
 
 {% endblock %}

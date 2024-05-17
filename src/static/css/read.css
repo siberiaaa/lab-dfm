@@ -1,0 +1,16 @@
+table{
+    margin: 30px;
+}
+
+table.read td{
+    padding: 2em 2em 2em 0.5em;
+}
+
+
+table.read td.right-text {
+    padding: 2em 0.5em 2em 3em;
+    text-align: right;
+}
+
+
+

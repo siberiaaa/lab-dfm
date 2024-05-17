@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1 class="listar">{% block title %} Sample types {% endblock %}</h1>
+
+{% if username != "" or username == None %}
+<a href="/sample_types/add" class="pure-button pure-button-primary"
+    ><i class="fa-solid fa-plus"></i>  &nbsp; Add sample type </a
+>
+{% endif %}
+
+<table class="pure-table pure-table-horizontal pure-table-striped">
+    <thead>
+        <tr>
+            <th>Sample type name</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for sample_type in sample_typelist %}
+        <tr>
+            <td>{{ sample_type["name"] }}</td>
+
+            {% if username != "" or username == None %}
+            <td><a href="/sample_types/{{ sample_type['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a> 
+                <a href="/sample_types/update/{{ sample_type['_id'] }}" class="pure-button"><i class="fa-solid fa-pen-to-square"></i></a> 
+                <a href="/sample_types/delete/{{ sample_type['_id'] }}" class="pure-button"><i class="fa-solid fa-trash"></i></a></td>
+            {% else %}
+            <td><p>Log in for options</p></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

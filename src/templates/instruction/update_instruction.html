@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1> {% block title %} Modify category {% endblock %} </h1>
+<h1> {% block title %} Modify instruction {% endblock %} </h1>
 
 <article class="form">
 
@@ -11,12 +11,12 @@
     
         <div class="pure-control-group">
             <label for="name"> Name </label>
-            <input type="text" name="name" placeholder="Name" value="{{ category['name'] }}" required="">
+            <input type="text" name="name" placeholder="Name" value="{{ instruction['name'] }}" required="">
         </div>
     
         <div class="pure-control-group">
             <label class="pure-control-group" for="description"> Description </label>
-            <input type="text" name="description" placeholder="Description" value="{{ category['description'] }}" required=""> 
+            <input type="text" name="description" placeholder="Description" value="{{ instruction['description'] }}" required=""> 
         </div>
     
         <button class="pure-button pure-button-primary" type="submit">Modify</button>

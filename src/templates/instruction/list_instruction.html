@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1 class="listar">{% block title %} Instructions {% endblock %}</h1>
+
+{% if username != "" or username == None %}
+<a href="/instructions/add" class="pure-button pure-button-primary"
+    ><i class="fa-solid fa-plus"></i>  &nbsp; Add instruction </a
+>
+{% endif %}
+
+<table class="pure-table pure-table-horizontal pure-table-striped">
+    <thead>
+        <tr>
+            <th>Instruction name</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for instruction in instructionlist %}
+        <tr>
+            <td>{{ instruction["name"] }}</td>
+            {% if username != "" or username == None %}
+                <td><a href="/instructions/{{ instruction['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a> 
+                    <a href="/instructions/update/{{ instruction['_id'] }}" class="pure-button"><i class="fa-solid fa-pen-to-square"></i></a> 
+                    <a href="/instructions/delete/{{ instruction['_id'] }}" class="pure-button"><i class="fa-solid fa-trash"></i></a></td>
+            {% else %}
+            <td><p>Log in for options</p></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock %}

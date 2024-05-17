@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+<h1> {% block title %} Log in {% endblock %} </h1>
+
+<article class="form">
+
+    <form method="post" class="pure-form pure-form-aligned">
+        <fieldset>
+    
+        <div class="pure-control-group">
+            <label for="user"> User </label>
+            <input  type="text" name="user" placeholder="Username" required="">   
+        </div>
+    
+        <div class="pure-control-group">
+            <label class="pure-control-group" for="password"> Password </label>
+            <input type="password" name="password" placeholder="Password" required="">      
+        </div>
+    
+        <button class="pure-button pure-button-primary" type="submit">Log in</button>
+        </fieldset>
+    </form>
+
+    {% for message in get_flashed_messages() %}
+
+        <p class="error"> {{ message }} </p>
+
+    {% endfor %}
+  
+</article>
+
+
+{% endblock %}

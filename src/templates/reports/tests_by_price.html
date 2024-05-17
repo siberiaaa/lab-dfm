@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1> {% block title %} Test by price {% endblock %} </h1>
+
+    {% for message in get_flashed_messages() %}
+            <p class="error"> {{ message }} </p>
+    {% endfor %}
+    
+{% if testlist != -1 %}
+
+    <div class="report">
+        <h3>1Bs. to 100 Bs. tests</h3>   
+        <h3>Total: {{ testprice_dictionary["1-100"]|length }} tests</h3>  
+    </div>
+     
+    <table class="pure-table pure-table-horizontal pure-table-striped report">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for test in testprice_dictionary["1-100"] %}
+            <tr>
+                <td>{{ test["name"] }}</td>
+                <td>{{ test["price"] }} Bs.</td>
+
+                {% if username != "" or username == None %}
+                <td><a href="/tests/{{ test['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a></td>
+                {% else %}
+                <td><p>Log in for options</p></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <div class="report">
+    <h3>101Bs. to 200 Bs. tests</h3>   
+    <h3>Total: {{ testprice_dictionary["101-200"]|length }} tests</h3>   
+    </div>
+    <table class="pure-table pure-table-horizontal pure-table-striped report">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for test in testprice_dictionary["101-200"] %}
+            <tr>
+                <td>{{ test["name"] }}</td>
+                <td>{{ test["price"] }} Bs.</td>
+
+                {% if username != "" or username == None %}
+                <td><a href="/tests/{{ test['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a></td>
+                {% else %}
+                <td><p>Log in for options</p></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <div class="report">
+    <h3>201Bs. to 300 Bs. tests</h3>   
+    <h3>Total: {{ testprice_dictionary["201-300"]|length }} tests</h3>   
+    </div>
+    <table class="pure-table pure-table-horizontal pure-table-striped report">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for test in testprice_dictionary["201-300"] %}
+            <tr>
+                <td>{{ test["name"] }}</td>
+                <td>{{ test["price"] }} Bs.</td>
+
+                {% if username != "" or username == None %}
+                <td><a href="/tests/{{ test['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a></td>
+                {% else %}
+                <td><p>Log in for options</p></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    
+    <div class="report">
+    <h3>301Bs. to 500 Bs. tests</h3>  
+    <h3>Total: {{ testprice_dictionary["301-500"]|length }} tests</h3> 
+    </div> 
+    <table class="pure-table pure-table-horizontal pure-table-striped report">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for test in testprice_dictionary["301-500"] %}
+            <tr>
+                <td>{{ test["name"] }}</td>
+                <td>{{ test["price"] }} Bs.</td>
+
+                {% if username != "" or username == None %}
+                <td><a href="/tests/{{ test['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a></td>
+                {% else %}
+                <td><p>Log in for options</p></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <div class="report">
+    <h3>+501 Bs. tests</h3>  
+    <h3>Total: {{ testprice_dictionary["+501"]|length }} tests</h3>  
+    </div>  
+    <table class="pure-table pure-table-horizontal pure-table-striped report">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for test in testprice_dictionary["+501"] %}
+            <tr>
+                <td>{{ test["name"] }}</td>
+                <td>{{ test["price"] }} Bs.</td>
+
+                {% if username != "" or username == None %}
+                <td><a href="/tests/{{ test['_id'] }}" class="pure-button"><i class="fa-solid fa-circle-info"></i></a></td>
+                {% else %}
+                <td><p>Log in for options</p></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+{% endif %}
+
+
+
+{% endblock %}

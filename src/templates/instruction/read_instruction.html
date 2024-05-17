@@ -7,18 +7,18 @@
 
 {% block content %}
 
-<h1> {% block title %} Category {% endblock %} </h1>
+<h1> {% block title %} Instruction {% endblock %} </h1>
 
 <table class="pure-table pure-table-horizontal read">
     <tbody>
         <tr>
-            <td class="right-text">Category name:</td>
-            <td>{{ category['name'] }}</td>
+            <td class="right-text">Instruction name:</td>
+            <td>{{ instruction['name'] }}</td>
             
         </tr>
         <tr>
-            <td class="right-text">Category description:</td>
-            <td>{{ category['description'] }}</td>
+            <td class="right-text">Instruction description:</td>
+            <td>{{ instruction['description'] }}</td>
         </tr>
     </tbody>
 </table>

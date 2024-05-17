@@ -1,0 +1,14 @@
+select {
+    width: 216.9px;
+}
+
+article.filter{
+    margin: 30px 40px 70px 40px;
+    padding: 15px;
+    align-self: flex-start;
+    width: 50%;
+
+    border: solid 1.5px rgb(230, 230, 230);
+    border-radius: 10px;
+
+}

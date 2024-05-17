@@ -3,21 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} {% endblock %}</title>
-    
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/base.css') }}">
+        <script src="https://kit.fontawesome.com/5a3bf4e32c.js" crossorigin="anonymous"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wdth,wght@75..100,300..800&display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/wheresmyperry.ico') }}" type="image/x-icon">
+
+    <title>{% block title %} {% endblock %}</title>
+
+    {% block optional %} {% endblock %}
+    
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    
 
 </head>
+
 <body>
-    <nav> 
-        <a href="{{ url_for("home") }}">Home</a>
-    </nav> 
+    <nav>
+        <section class="pure-menu pure-menu-horizontal">
+            <a href="{{ url_for("home") }}" class="pure-menu-heading pure-menu-link">DOOF's LAB</a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="{{ url_for("tests") }}" class="pure-menu-link"">Tests</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="{{ url_for("categories") }}" class="pure-menu-link"">Categories</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="{{ url_for("sample_types") }}" class="pure-menu-link"">Sample types</a>
+                </li>
+                <li class="pure-menu-item">
+                    <a href="{{ url_for("instructions") }}" class="pure-menu-link"">Instructions</a>
+                </li>
+                {% if username != "" or username == None %}
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                    <a href="#" id="menuLink1" class="pure-menu-link">Reports</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item">
+                            <a href="{{ url_for("tests_in_categories") }}" class="pure-menu-link">Tests in categories</a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a href="{{ url_for("common_instruction") }}" class="pure-menu-link">Common instruction</a>
+                        </li>
+                        <li class="pure-menu-item">
+                            <a href="{{ url_for("tests_by_price") }}" class="pure-menu-link">Tests by price</a>
+                        </li>
+                    </ul>
+                </li>
+                {% endif %}  
+            </ul>
+        </section>
+
+        <section class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                {% if username != "" or username == None %}
+                    <li class="pure-menu-item">
+                        <a href="{{ url_for("logout") }}" class="pure-menu-link"">Log out</a>
+                    </li>
+                    
+                {% else %}
+                    <li class="pure-menu-item">
+                        <a href="{{ url_for("login") }}" class="pure-menu-link"">Log in</a>
+                    </li>
+                    <li class="pure-menu-item">
+                        <a href="{{ url_for("signup") }}" class="pure-menu-link"">Sign up</a>
+                    </li>
+                    
+                {% endif %}  
+            </ul>
+        </section>
+    </nav>
+    
+
+    {% if username != "" or username == None %}
+        <p class="welcome">Welcome {{ username }}!</p>
+    {% endif %}
+   
+
+    <article class="content"> {% block content %} {% endblock %} </article>
+    
+    {% if not self.content() | trim %} <img src="{{ url_for('static', filename='img/DoofenshmirtzFull.webp') }}"> {% endif %}
 
 
-    <article> {% block content %} {% endblock %} </article> 
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

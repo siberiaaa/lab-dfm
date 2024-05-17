@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block optional %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/test.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/base.css') }}">
+{% endblock %} 
+
+
+{% block content %}
+
+<h1> {% block title %} Add test {% endblock %} </h1>
+
+<article class="form">
+
+    <form method="post" class="pure-form pure-form-aligned">
+        <fieldset>
+    
+        <div class="pure-control-group">
+            <label for="name"> Name </label>
+            <input  type="text" name="name" placeholder="Name" required="">   
+        </div>
+    
+        <div class="pure-control-group">
+            <label class="pure-control-group" for="description"> Description </label>
+            <input type="text" name="description" placeholder="Description" required="">      
+        </div>
+
+        <div class="pure-control-group">
+            <label class="pure-control-group" for="category"> Test category </label>
+            <select name="category">
+                {% if categorylist == -1 %}
+                    <option value=""></option>
+                {% else %}
+                    {% for category in categorylist %}
+                    <option value="{{ category['_id'] }}">{{ category['name'] }}</option>
+                    {% endfor %}
+                {% endif %}                
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label class="pure-control-group" for="sampletype"> Sample type </label>
+            <select name="sampletype">
+                {% if sampletypelist == -1 %}
+                    <option value=""></option>
+                {% else %}
+                    {% for sampletype in sampletypelist %}
+                    <option value="{{ sampletype['_id'] }}">{{ sampletype['name'] }}</option>
+                    {% endfor %}
+                {% endif %}    
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label class="pure-control-group" for="price"> Price </label>
+            <input type="number" name="price" placeholder="Price" required="">   
+            <span class="pure-form-message-inline">Bs.</span>   
+        </div>
+
+        <div class="pure-control-group">
+            <label class="pure-control-group" for="instruction"> Instructions </label>
+            <select name="instruction">
+                {% if instructionlist == -1 %}
+                    <option value=""></option>
+                {% else %}
+                    {% for instruction in instructionlist %}
+                    <option value="{{ instruction['_id'] }}">{{ instruction['name'] }}</option>
+                    {% endfor %}
+                {% endif %}            
+            </select>
+        </div>
+    
+        <button class="pure-button pure-button-primary" type="submit">Add</button>
+        </fieldset>
+    </form>
+
+    {% for message in get_flashed_messages() %}
+
+        <p class="error"> {{ message }} </p>
+
+    {% endfor %}
+  
+</article>
+
+
+{% endblock %}

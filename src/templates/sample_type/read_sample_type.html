@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block optional %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/read.css') }}">
+{% endblock %} 
+
+
+{% block content %}
+
+<h1> {% block title %} Sample type {% endblock %} </h1>
+
+<table class="pure-table pure-table-horizontal read">
+    <tbody>
+        <tr>
+            <td class="right-text">Sample type name:</td>
+            <td>{{ sample_type['name'] }}</td>
+            
+        </tr>
+        <tr>
+            <td class="right-text">Sample type description:</td>
+            <td>{{ sample_type['description'] }}</td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}

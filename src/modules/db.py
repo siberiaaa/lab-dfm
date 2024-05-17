@@ -1,11 +1,22 @@
-import pymongo
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
-uri = "mongodb+srv://pyapp:jrNQOkI36Gs04PrL@dave.qhyzhzr.mongodb.net/?retryWrites=true&w=majority&appName=Dave"
 
-client = pymongo.MongoClient("uri")
+uri = "mongodb+srv://siberia:rrUyQyWvzLOqDLkR@dave.qhyzhzr.mongodb.net/?retryWrites=true&w=majority&appName=Dave"
+client = MongoClient(uri, server_api=ServerApi('1'))
 
-# Podemos acceder a la BD
-db = client.personascrud
 
-# Y tuego podemos acceder a tas colecciones
-collection = db.personas
+db = client.doofenshmirtz_lab
+
+#Collections
+categories = db.categories
+
+
+sample_types = db.sample_types
+
+tests = db.tests
+
+users = db.users
+
+
+instructions = db.instructions
