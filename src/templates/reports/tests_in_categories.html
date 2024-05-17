@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
 
 
+{% block optional %}
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+{% endblock %}
+
 {% block content %}
 
-    <h1> {% block title %} Tests in categories {% endblock %} </h1>
+<h1> {% block title %} Tests in categories {% endblock %} </h1>
 
-    {% for message in get_flashed_messages() %}
-            <p class="error"> {{ message }} </p>
-    {% endfor %}
+{% for message in get_flashed_messages() %}
+<p class="error"> {{ message }} </p>
+{% endfor %}
+
+
     
 {% if testlist != -1 and categorylist != -1%}
+
+    <p id="tests_in_categories" class="hidden">{{ categories_dictionary|tojson }}</p>
+
+    <div class="canvas">
+    <canvas id="myChart"></canvas>
+    </div>  
 
     <table class="pure-table pure-table-horizontal pure-table-striped">
         <thead>
@@ -31,7 +43,6 @@
     </table>
 
  
-
 
 
 {% endif %}

@@ -77,3 +77,15 @@ table.report{
     margin: 0 0 100px 0;
 }
 
+
+
+
+p.hidden{
+    display: none;
+}
+
+div.canvas{
+    margin: 50px;
+    height: 500px;
+    width: 500px;
+}

@@ -1,7 +1,7 @@
-from flask import request, render_template, redirect, url_for, flash, make_response, g
+from flask import request, render_template, redirect, url_for, flash, make_response, g, session
 from bson.objectid import ObjectId
 from modules.db import users 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 def login():
     if request.method == 'POST':
@@ -14,9 +14,9 @@ def login():
         if user == None:
             flash("Username or password incorrect.")
         else:
-            resp = make_response(redirect(url_for("home")))
-            resp.set_cookie("session", str(user["_id"]))
-            return resp
+            session.permanent = True
+            session['session'] = str(user["_id"])
+            return redirect(url_for("home"))
 
     return render_template("authentication/login.html", username=g.get("session"))
 
@@ -47,8 +47,5 @@ def signup():
 
 
 def logout():
-
-    resp = make_response(redirect(url_for("home")))
-    resp.set_cookie('session', '', expires=0)
-
-    return resp
+    session.pop('session', None)
+    return redirect(url_for("home"))

@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+{% block optional %}
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+{% endblock %}
 
 {% block content %}
 
@@ -9,7 +12,14 @@
             <p class="error"> {{ message }} </p>
     {% endfor %}
     
+   
 {% if testlist != -1 and instructionlist != -1%}
+
+    <p id="common_instruction" class="hidden">{{ instructions_dictionary|tojson }}</p>
+
+    <div class="canvas">
+    <canvas id="myChart"></canvas>
+    </div>    
 
     <table class="pure-table pure-table-horizontal pure-table-striped">
         <thead>
@@ -30,31 +40,7 @@
         </tbody>
     </table>
 
- 
-    <canvas id="myChart"></canvas>
-
-    <script>
-        const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      </script>
+    
 
 
 {% endif %}

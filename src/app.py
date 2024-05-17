@@ -6,9 +6,11 @@ import modules.sample_type as sample_type
 import modules.instruction as instruction
 import modules.authentication as authentication
 import modules.reports as reports
+from datetime import timedelta
 
 app = Flask(__name__, template_folder="./templates")
 app.config["SECRET_KEY"] = "wao"
+app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=5)
 
 
 @app.before_request

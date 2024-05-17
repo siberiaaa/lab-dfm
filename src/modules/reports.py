@@ -9,10 +9,10 @@ def tests_in_categories():
     categories_dictionary = -1
 
     if tests.count_documents({}) != 0:
-        testlist = tests.find()
+        testlist = list(tests.find())
     
     if categories.count_documents({}) != 0:
-        categorylist = categories.find()
+        categorylist = list(categories.find())
 
     if testlist == -1 or categorylist == -1:
         flash("Add more tests with existent categories to generate report.")
@@ -36,10 +36,10 @@ def common_instruction():
     instructions_dictionary = -1
 
     if tests.count_documents({}) != 0:
-        testlist = tests.find()
+        testlist = list(tests.find())
     
     if instructions.count_documents({}) != 0:
-        instructionlist = instructions.find()
+        instructionlist = list(instructions.find())
 
     if testlist == -1 or instructionlist == -1:
         flash("Add more tests with existent instructions to generate report.")
@@ -68,18 +68,24 @@ def tests_by_price():
         flash("Add more tests to generate report.")
     else:
         testprice_dictionary = {"1-100": [], "101-200": [], "201-300": [], "301-500": [], "+501": []}
+        testpricequantity_dictionary = {"1-100": 0, "101-200": 0, "201-300": 0, "301-500": 0, "+501": 0}
 
         for test in testlist:
             if int(test["price"]) >= 1 and int(test["price"]) <= 100:
                 testprice_dictionary["1-100"].append(test)
+                testpricequantity_dictionary["1-100"] += 1
             elif int(test["price"]) >= 101 and int(test["price"]) <= 200:
                 testprice_dictionary["101 - 200"].append(test)
+                testpricequantity_dictionary["101-200"] += 1
             elif int(test["price"]) >= 201 and int(test["price"]) <= 300: 
                 testprice_dictionary["201 - 300"].append(test)
+                testpricequantity_dictionary["201-300"] += 1
             elif int(test["price"]) >= 301 and int(test["price"]) <= 500: 
                 testprice_dictionary["301 - 500"].append(test)
+                testpricequantity_dictionary["301-500"] += 1
             elif int(test["price"]) >= 501: 
-                testprice_dictionary["501 +"].append(test)
+                testprice_dictionary["+501"].append(test)
+                testpricequantity_dictionary["+501"] += 1
          
 
-    return render_template("reports/tests_by_price.html", testlist=testlist, testprice_dictionary=testprice_dictionary, username=g.get("session"))
+    return render_template("reports/tests_by_price.html", testlist=testlist, testprice_dictionary=testprice_dictionary, testpricequantity_dictionary=testpricequantity_dictionary, username=g.get("session"))

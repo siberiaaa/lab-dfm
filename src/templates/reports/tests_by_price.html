@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 
+{% block optional %}
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+{% endblock %}
+
+
 {% block content %}
 
     <h1> {% block title %} Test by price {% endblock %} </h1>
@@ -10,6 +15,12 @@
     {% endfor %}
     
 {% if testlist != -1 %}
+
+    <p id="tests_by_price" class="hidden">{{ testpricequantity_dictionary|tojson }}</p>
+
+    <div class="canvas">
+    <canvas id="myChart"></canvas>
+    </div>  
 
     <div class="report">
         <h3>1Bs. to 100 Bs. tests</h3>   
@@ -164,6 +175,7 @@
     </table>
 
 
+    
 
 {% endif %}
 

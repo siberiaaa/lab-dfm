@@ -16,10 +16,13 @@
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/wheresmyperry.ico') }}" type="image/x-icon">
 
-    <title>{% block title %} {% endblock %}</title>
+    <link rel="" href="{{ url_for('static', filename='img/wheresmyperry.ico') }}" type="image/x-icon">
 
-    {% block optional %} {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
+    {% block optional %} {% endblock %}
+
+    <title>{% block title %} {% endblock %}</title>
     
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 
@@ -91,10 +94,15 @@
 
     <article class="content"> {% block content %} {% endblock %} </article>
     
-    {% if not self.content() | trim %} <img src="{{ url_for('static', filename='img/DoofenshmirtzFull.webp') }}"> {% endif %}
+    {% if not self.content() | trim %}
+        {% for message in get_flashed_messages() %}
+            <p class="error"> {{ message }} </p>
+        {% endfor %}
 
+        <img src="{{ url_for('static', filename='img/DoofenshmirtzFull.webp') }}">
+    {% endif %}
+    
 
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
 </body>
 </html>

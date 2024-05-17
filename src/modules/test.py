@@ -101,9 +101,9 @@ def read_test(id):
     oid = ObjectId(id)
     element = tests.find_one({"_id": oid})
 
-    category = categories.find_one({"_id": element["category"]})
-    sampletype = sample_types.find_one({"_id": element["sampletype"]})
-    instruction = instructions.find_one({"_id": element["instruction"]})
+    category = categories.find_one({"_id": ObjectId(element["category"])})
+    sampletype = sample_types.find_one({"_id": ObjectId(element["sampletype"])})
+    instruction = instructions.find_one({"_id": ObjectId(element["instruction"])})
 
     if category == None:
         category_name = "Not found"
