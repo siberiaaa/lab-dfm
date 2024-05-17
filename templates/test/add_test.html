@@ -29,8 +29,9 @@
             <label class="pure-control-group" for="category"> Test category </label>
             <select name="category">
                 {% if categorylist == -1 %}
-                    <option value=""></option>
+                    <option value="">-Select category-</option>
                 {% else %}
+                    <option value="">-Select category-</option>
                     {% for category in categorylist %}
                     <option value="{{ category['_id'] }}">{{ category['name'] }}</option>
                     {% endfor %}
@@ -42,8 +43,9 @@
             <label class="pure-control-group" for="sampletype"> Sample type </label>
             <select name="sampletype">
                 {% if sampletypelist == -1 %}
-                    <option value=""></option>
+                    <option value="">-Select sample type-</option>
                 {% else %}
+                    <option value="">-Select sample type-</option>
                     {% for sampletype in sampletypelist %}
                     <option value="{{ sampletype['_id'] }}">{{ sampletype['name'] }}</option>
                     {% endfor %}
@@ -61,8 +63,9 @@
             <label class="pure-control-group" for="instruction"> Instructions </label>
             <select name="instruction">
                 {% if instructionlist == -1 %}
-                    <option value=""></option>
+                    <option value="">-Select instruction-</option>
                 {% else %}
+                    <option value="">-Select instruction-</option>
                     {% for instruction in instructionlist %}
                     <option value="{{ instruction['_id'] }}">{{ instruction['name'] }}</option>
                     {% endfor %}

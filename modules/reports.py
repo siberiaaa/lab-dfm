@@ -75,13 +75,13 @@ def tests_by_price():
                 testprice_dictionary["1-100"].append(test)
                 testpricequantity_dictionary["1-100"] += 1
             elif int(test["price"]) >= 101 and int(test["price"]) <= 200:
-                testprice_dictionary["101 - 200"].append(test)
+                testprice_dictionary["101-200"].append(test)
                 testpricequantity_dictionary["101-200"] += 1
             elif int(test["price"]) >= 201 and int(test["price"]) <= 300: 
-                testprice_dictionary["201 - 300"].append(test)
+                testprice_dictionary["201-300"].append(test)
                 testpricequantity_dictionary["201-300"] += 1
             elif int(test["price"]) >= 301 and int(test["price"]) <= 500: 
-                testprice_dictionary["301 - 500"].append(test)
+                testprice_dictionary["301-500"].append(test)
                 testpricequantity_dictionary["301-500"] += 1
             elif int(test["price"]) >= 501: 
                 testprice_dictionary["+501"].append(test)

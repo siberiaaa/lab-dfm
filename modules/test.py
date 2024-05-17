@@ -146,13 +146,15 @@ def update_test(id):
     oid = ObjectId(id)
     element = tests.find_one({"_id": oid})
 
+    element["price"] = float(element["price"])
+
     if request.method == 'POST':
         oid = ObjectId(id)
         new_element = request.form
 
-        if new_element["category"] == "" or new_element["sampletype"] == "" or new_element["instruction"] == "":
-            #flash
-            return
+        # if new_element["category"] == "" or new_element["sampletype"] == "" or new_element["instruction"] == "":
+        #     #flash
+        #     return
 
         
         tests.replace_one({"_id": oid},
